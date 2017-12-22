@@ -90,20 +90,25 @@ setInterval(updateClock, oneSecond);
 
 
 var partyTimeButton = document.getElementById("partyTimeButton");
+var partyOverButton = document.getElementById("partyOverButton");
 
 var partyEvent = function() {
 // change time to partyTime if we click the button, then change it back to the current time if we click it again.
   if (isPartyTime === false) {
     isPartyTime = true;
     time = partyTime;
-    partyTimeButton.innerText = "PARTY TIME!";
-    partyTimeButton.style.backgroundColor = "#222";
+    partyOverButton.style.display = "inline-block";
+    partyTimeButton.style.display = "none";
+   
+    
   } else {
     isPartyTime = false;
     time = new Date().getHours();
-    partyTimeButton.innerText = "Party Over";
-    partyTimeButton.style.backgroundColor = "#0A8DAB";
+    partyOverButton.style.display = "none";
+    partyTimeButton.style.display = "inline-block";  
+    
 
   }
 };
 partyTimeButton.addEventListener('click', partyEvent);
+partyOverButton.addEventListener('click', partyEvent);
